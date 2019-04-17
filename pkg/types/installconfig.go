@@ -2,6 +2,7 @@ package types
 
 import (
 	"fmt"
+	"github.com/openshift/installer/pkg/types/ovirt"
 
 	"github.com/openshift/installer/pkg/ipnet"
 	"github.com/openshift/installer/pkg/types/aws"
@@ -31,6 +32,7 @@ var (
 		azure.Name,
 		gcp.Name,
 		openstack.Name,
+		ovirt.Name,
 	}
 	// HiddenPlatformNames is a slice with all the
 	// hidden-but-supported platform names. This list isn't presented
@@ -146,6 +148,10 @@ type Platform struct {
 	// VSphere is the configuration used when installing on vSphere.
 	// +optional
 	VSphere *vsphere.Platform `json:"vsphere,omitempty"`
+
+	// Ovirt is the configuration used when installing on oVirt.
+	// +optional
+	Ovirt *ovirt.Platform `json:"ovirt,omitempty"`
 }
 
 // Name returns a string representation of the platform (e.g. "aws" if
@@ -171,6 +177,8 @@ func (p *Platform) Name() string {
 		return openstack.Name
 	case p.VSphere != nil:
 		return vsphere.Name
+	case p.Ovirt != nil:
+		return ovirt.Name
 	default:
 		return ""
 	}

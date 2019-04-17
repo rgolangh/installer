@@ -2,6 +2,7 @@ package manifests
 
 import (
 	"fmt"
+	"github.com/openshift/installer/pkg/types/ovirt"
 	"path/filepath"
 
 	"github.com/ghodss/yaml"
@@ -143,6 +144,13 @@ func (i *Infrastructure) Generate(dependencies asset.Parents) error {
 		}
 	case vsphere.Name:
 		config.Status.PlatformStatus.Type = configv1.VSpherePlatformType
+	case ovirt.Name:
+		config.Status.PlatformStatus.Type = configv1.OvirtPlatformType
+		config.Status.PlatformStatus.Ovirt = &configv1.OvirtPlatformStatus{
+			APIServerInternalIP: installConfig.Config.Ovirt.APIVIP,
+			NodeDNSIP:           installConfig.Config.Ovirt.DNSVIP,
+			IngressIP:           installConfig.Config.Ovirt.IngressVIP,
+		}
 	default:
 		config.Status.PlatformStatus.Type = configv1.NonePlatformType
 	}

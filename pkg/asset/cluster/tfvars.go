@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+
 	"os"
 
 	igntypes "github.com/coreos/ignition/config/v2_2/types"
@@ -31,6 +32,7 @@ import (
 	gcptfvars "github.com/openshift/installer/pkg/tfvars/gcp"
 	libvirttfvars "github.com/openshift/installer/pkg/tfvars/libvirt"
 	openstacktfvars "github.com/openshift/installer/pkg/tfvars/openstack"
+	ovirttfvars "github.com/openshift/installer/pkg/tfvars/ovirt"
 	"github.com/openshift/installer/pkg/types/aws"
 	"github.com/openshift/installer/pkg/types/azure"
 	"github.com/openshift/installer/pkg/types/baremetal"
@@ -39,6 +41,7 @@ import (
 	"github.com/openshift/installer/pkg/types/none"
 	"github.com/openshift/installer/pkg/types/openstack"
 	openstackdefaults "github.com/openshift/installer/pkg/types/openstack/defaults"
+	"github.com/openshift/installer/pkg/types/ovirt"
 	"github.com/openshift/installer/pkg/types/vsphere"
 	"github.com/openshift/installer/pkg/version"
 )
@@ -342,6 +345,22 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 			"provisioning",
 			installConfig.Config.Platform.BareMetal.Hosts,
 			string(*rhcosImage),
+		)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)
+		}
+		t.FileList = append(t.FileList, &asset.File{
+			Filename: fmt.Sprintf(TfPlatformVarsFileName, platform),
+			Data:     data,
+		})
+	case ovirt.Name:
+		data, err := ovirttfvars.TFVars(
+			installConfig.Config.Platform.Ovirt.URL,
+			installConfig.Config.Platform.Ovirt.Username,
+			installConfig.Config.Platform.Ovirt.Password,
+			installConfig.Config.Platform.Ovirt.Cafile,
+			installConfig.Config.Platform.Ovirt.ClusterID,
+			installConfig.Config.Platform.Ovirt.TemplateID,
 		)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)

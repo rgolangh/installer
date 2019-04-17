@@ -3,6 +3,7 @@ package installconfig
 import (
 	"context"
 	"fmt"
+	"github.com/openshift/installer/pkg/types/ovirt"
 
 	"github.com/gophercloud/utils/openstack/clientconfig"
 	"github.com/openshift/installer/pkg/asset"
@@ -68,6 +69,8 @@ func (a *PlatformCredsCheck) Generate(dependencies asset.Parents) error {
 		if err != nil {
 			return errors.Wrap(err, "creating Azure session")
 		}
+	case ovirt.Name:
+		// TODO rgolan validate ovirt credentials
 	default:
 		err = fmt.Errorf("unknown platform type %q", platform)
 	}

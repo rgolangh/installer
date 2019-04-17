@@ -799,6 +799,22 @@
   version = "v0.1.7"
 
 [[projects]]
+  digest = "1:556507a0c824a5adb52cca65625c44fbd3eb909011c47f7125703785740c0281"
+  name = "github.com/ovirt/go-ovirt"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "826bd4309444d965a4bdf5348881bfc2267ed200"
+  version = "v4.3.8"
+
+[[projects]]
+  digest = "1:3190d8cd5f0c59111116bae1af560d7da853392d062dba11d066c14a1de37260"
+  name = "github.com/ovirt/terraform-provider-ovirt"
+  packages = ["ovirt"]
+  pruneopts = "NUT"
+  revision = "7a9606612169336612cc168a5cedd8a12efdc592"
+  version = "v0.4.2"
+
+[[projects]]
   branch = "master"
   digest = "1:3bf17a6e6eaa6ad24152148a631d18662f7212e21637c2699bff3369b7f00fa2"
   name = "github.com/petar/GoLLRB"
@@ -1193,6 +1209,7 @@
     "github.com/dmacvicar/terraform-provider-libvirt/libvirt",
     "github.com/hashicorp/go-azure-helpers/authentication",
     "github.com/openshift-metal3/terraform-provider-ironic/ironic",
+    "github.com/ovirt/terraform-provider-ovirt/ovirt",
     "github.com/terraform-providers/terraform-provider-aws/aws",
     "github.com/terraform-providers/terraform-provider-azurerm/azurerm",
     "github.com/terraform-providers/terraform-provider-azurerm/azurerm/helpers/azure",

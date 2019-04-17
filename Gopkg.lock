@@ -727,6 +727,22 @@
   version = "v3.11.0"
 
 [[projects]]
+  branch = "v1alpha1"
+  digest = "1:775f6e165c300ab48bed16fdc9923d490eb027d54f9b1ded6a829353456f8ed5"
+  name = "github.com/ovirt/cluster-api-provider-ovirt"
+  packages = ["pkg/apis/ovirtclusterproviderconfig/v1alpha1"]
+  pruneopts = "NUT"
+  revision = "289621fda7b8a07d59a31b1d3a378b801f0705a6"
+
+[[projects]]
+  branch = "master"
+  digest = "1:5dbbf24cc9f16f79decba464fde7dabcfe054ffadfa66f3534bc7a98825179e5"
+  name = "github.com/ovirt/go-ovirt"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "0b340c155a90e68259958bada9a0460fb3ed5122"
+
+[[projects]]
   digest = "1:93b1d84c5fa6d1ea52f4114c37714cddd84d5b78f151b62bb101128dd51399bf"
   name = "github.com/pborman/uuid"
   packages = ["."]
@@ -1431,6 +1447,8 @@
     "github.com/openshift/cluster-api/pkg/apis/machine/v1beta1",
     "github.com/openshift/library-go/pkg/config/clusteroperator/v1helpers",
     "github.com/openshift/machine-config-operator/pkg/apis/machineconfiguration.openshift.io/v1",
+    "github.com/ovirt/cluster-api-provider-ovirt/pkg/apis/ovirtclusterproviderconfig/v1alpha1",
+    "github.com/ovirt/go-ovirt",
     "github.com/pborman/uuid",
     "github.com/pkg/errors",
     "github.com/pkg/sftp",

@@ -3,6 +3,7 @@ package machines
 import (
 	"context"
 	"fmt"
+	"github.com/openshift/installer/pkg/asset/machines/ovirt"
 	"os"
 	"path/filepath"
 
@@ -47,6 +48,7 @@ import (
 	libvirttypes "github.com/openshift/installer/pkg/types/libvirt"
 	nonetypes "github.com/openshift/installer/pkg/types/none"
 	openstacktypes "github.com/openshift/installer/pkg/types/openstack"
+	ovirttypes "github.com/openshift/installer/pkg/types/ovirt"
 	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
@@ -291,6 +293,12 @@ func (m *Master) Generate(dependencies asset.Parents) error {
 					Data:     data,
 				}
 			}
+		}
+	case ovirttypes.Name:
+		pool.Platform.Ovirt = &ovirttypes.MachinePool{}
+		machines, err = ovirt.Machines(clusterID.InfraID, ic, pool, "master", "master-user-data")
+		if err != nil {
+			return errors.Wrap(err, "failed to create master machine objects for ovirt provider")
 		}
 
 	case nonetypes.Name, vspheretypes.Name:

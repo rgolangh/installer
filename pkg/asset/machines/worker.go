@@ -3,6 +3,7 @@ package machines
 import (
 	"context"
 	"fmt"
+	"github.com/openshift/installer/pkg/asset/machines/ovirt"
 	"os"
 	"path/filepath"
 
@@ -47,6 +48,7 @@ import (
 	libvirttypes "github.com/openshift/installer/pkg/types/libvirt"
 	nonetypes "github.com/openshift/installer/pkg/types/none"
 	openstacktypes "github.com/openshift/installer/pkg/types/openstack"
+	ovirttypes "github.com/openshift/installer/pkg/types/ovirt"
 	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
@@ -280,6 +282,15 @@ func (w *Worker) Generate(dependencies asset.Parents) error {
 			sets, err := openstack.MachineSets(clusterID.InfraID, ic, &pool, imageName, "worker", "worker-user-data")
 			if err != nil {
 				return errors.Wrap(err, "failed to create master machine objects")
+			}
+			for _, set := range sets {
+				machineSets = append(machineSets, set)
+			}
+		case ovirttypes.Name:
+			pool.Platform.Ovirt = &ovirttypes.MachinePool{}
+			sets, err := ovirt.MachineSets(clusterID.InfraID, ic, &pool, "worker", "worker-user-data")
+			if err != nil {
+				return errors.Wrap(err, "failed to create worker machine objects for ovirt provider")
 			}
 			for _, set := range sets {
 				machineSets = append(machineSets, set)

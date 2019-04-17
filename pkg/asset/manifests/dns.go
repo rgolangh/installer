@@ -3,6 +3,7 @@ package manifests
 import (
 	"context"
 	"fmt"
+	"github.com/openshift/installer/pkg/types/ovirt"
 	"path/filepath"
 	"strings"
 
@@ -110,7 +111,7 @@ func (d *DNS) Generate(dependencies asset.Parents) error {
 		}
 		config.Spec.PublicZone = &configv1.DNSZone{ID: zone.Name}
 		config.Spec.PrivateZone = &configv1.DNSZone{ID: fmt.Sprintf("%s-private-zone", clusterID.InfraID)}
-	case libvirttypes.Name, openstacktypes.Name, baremetaltypes.Name, nonetypes.Name, vspheretypes.Name:
+	case libvirttypes.Name, openstacktypes.Name, baremetaltypes.Name, nonetypes.Name, vspheretypes.Name, ovirt.Name:
 	default:
 		return errors.New("invalid Platform")
 	}

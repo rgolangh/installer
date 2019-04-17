@@ -1,6 +1,7 @@
 package manifests
 
 import (
+	"encoding/json"
 	"fmt"
 	"path/filepath"
 
@@ -17,6 +18,7 @@ import (
 	"github.com/openshift/installer/pkg/asset/manifests/azure"
 	gcpmanifests "github.com/openshift/installer/pkg/asset/manifests/gcp"
 	openstackmanifests "github.com/openshift/installer/pkg/asset/manifests/openstack"
+	ovirtmanifests "github.com/openshift/installer/pkg/asset/manifests/ovirt"
 	vspheremanifests "github.com/openshift/installer/pkg/asset/manifests/vsphere"
 	awstypes "github.com/openshift/installer/pkg/types/aws"
 	azuretypes "github.com/openshift/installer/pkg/types/azure"
@@ -25,6 +27,7 @@ import (
 	libvirttypes "github.com/openshift/installer/pkg/types/libvirt"
 	nonetypes "github.com/openshift/installer/pkg/types/none"
 	openstacktypes "github.com/openshift/installer/pkg/types/openstack"
+	ovirttypes "github.com/openshift/installer/pkg/types/ovirt"
 	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
@@ -146,6 +149,22 @@ func (cpc *CloudProviderConfig) Generate(dependencies asset.Parents) error {
 			return errors.Wrap(err, "could not create cloud provider config")
 		}
 		cm.Data[cloudProviderConfigDataKey] = vsphereConfig
+	case ovirttypes.Name:
+		ovirtConfig := ovirtmanifests.NewCloudProviderConfig(
+			installConfig.Config.Ovirt.URL,
+			installConfig.Config.Ovirt.Username,
+			installConfig.Config.Ovirt.Password,
+			installConfig.Config.Ovirt.Cafile,
+			installConfig.Config.Ovirt.Insecure,
+			installConfig.Config.Ovirt.StorageDomainName,
+			installConfig.Config.Ovirt.ClusterID,
+			installConfig.Config.Ovirt.TemplateID,
+		)
+		bytes, err := json.Marshal(ovirtConfig)
+		if err != nil {
+			return errors.Wrap(err, "failed to create ovirt cloud provider config")
+		}
+		cm.Data[cloudProviderConfigDataKey] = string(bytes)
 	default:
 		return errors.New("invalid Platform")
 	}

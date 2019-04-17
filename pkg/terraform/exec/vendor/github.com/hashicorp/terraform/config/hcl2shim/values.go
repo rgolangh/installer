@@ -2,10 +2,9 @@ package hcl2shim
 
 import (
 	"fmt"
-	"math/big"
-
 	"github.com/hashicorp/hil/ast"
 	"github.com/zclconf/go-cty/cty"
+	"math/big"
 
 	"github.com/hashicorp/terraform/configs/configschema"
 )
