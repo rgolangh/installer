@@ -45,3 +45,15 @@ variable "ovirt_template_id" {
   default     = ""
   description = "The ID of cluster"
 }
+
+variable "ovirt_node_mem" {
+  type = string
+  default = "8192"
+  description = "Mem allocated on OCP node VMs"
+}
+
+variable "ovirt_node_cores" {
+  type = string
+  default = "4"
+  description = "Cores allocated on OCP node VMs"
+}

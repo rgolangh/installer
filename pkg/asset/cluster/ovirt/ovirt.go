@@ -16,5 +16,7 @@ func Metadata(config *types.InstallConfig) *ovirt.Metadata {
 		APIVIP:     config.Platform.Ovirt.APIVIP,
 		DNSVIP:     config.Platform.Ovirt.DNSVIP,
 		IngressVIP: config.Platform.Ovirt.IngressVIP,
+		NodeMem:    config.Platform.Ovirt.NodeMem,
+		NodeCores:  config.Platform.Ovirt.NodeCores,
 	}
 }

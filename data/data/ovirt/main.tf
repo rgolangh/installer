@@ -17,8 +17,8 @@ resource "ovirt_vm" "master" {
   name        = "master-${count.index}.${var.cluster_domain}"
   cluster_id  = var.ovirt_cluster_id
   template_id = var.ovirt_template_id
-  memory      = "8192"
-  cores       = "4"
+  memory      = var.ovirt_node_mem
+  cores       = var.ovirt_node_cores
 
   initialization {
     host_name     = "master-${count.index}.local"

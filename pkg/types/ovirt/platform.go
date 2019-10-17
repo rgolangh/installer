@@ -28,4 +28,7 @@ type Platform struct {
 	// ingressIP is an external IP which routes to the default ingress controller.
 	// The IP is a suitable target of a wildcard DNS record used to resolve default route host names.
 	IngressVIP string `json:"ingress_vip,omitempty"`
+
+	NodeMem string `json:"node_mem,omitempty"`
+	NodeCores string `json:"node_cores,omitempty"`
 }

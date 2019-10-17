@@ -361,6 +361,8 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 			installConfig.Config.Platform.Ovirt.Cafile,
 			installConfig.Config.Platform.Ovirt.ClusterID,
 			installConfig.Config.Platform.Ovirt.TemplateID,
+			installConfig.Config.Platform.Ovirt.NodeMem,
+			installConfig.Config.Platform.Ovirt.NodeCores,
 		)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)

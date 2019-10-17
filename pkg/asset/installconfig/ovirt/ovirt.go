@@ -137,6 +137,28 @@ func Platform() (*ovirt.Platform, error) {
 	err = survey.Ask([]*survey.Question{
 		{
 			Prompt: &survey.Input{
+				Message: "Enter how much memory (MB) you want to allocate for each node",
+				Help:    "RAM to allocate for each OCP node",
+				Default: "8192",
+			},
+			Validate: survey.ComposeValidators(survey.Required),
+		},
+	}, &p.NodeMem)
+
+	err = survey.Ask([]*survey.Question{
+		{
+			Prompt: &survey.Input{
+				Message: "Enter how many cores you want to allocate for each node",
+				Help:    "number of cores to allocate for each OCP node",
+				Default: "4",
+			},
+			Validate: survey.ComposeValidators(survey.Required),
+		},
+	}, &p.NodeCores)
+
+	err = survey.Ask([]*survey.Question{
+		{
+			Prompt: &survey.Input{
 				Message: "Enter the internal API Virtual IP",
 				Help:    "Make sure the ip is not used by any party",
 				Default: "",
