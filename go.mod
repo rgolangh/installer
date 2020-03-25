@@ -70,12 +70,12 @@ require (
 	github.com/openshift/cluster-api v0.0.0-20191129101638-b09907ac6668
 	github.com/openshift/cluster-api-provider-gcp v0.0.1-0.20200120152131-1b09fd9e7156
 	github.com/openshift/cluster-api-provider-libvirt v0.2.1-0.20191219173431-2336783d4603
-	github.com/openshift/cluster-api-provider-ovirt v0.1.1-0.20200128081049-840376ca5c09
+	github.com/openshift/cluster-api-provider-ovirt v0.1.1-0.20200402173228-4981fa21d0d7
 	github.com/openshift/library-go v0.0.0-20200210105614-4bf528465627
 	github.com/openshift/machine-api-operator v0.2.1-0.20200310180732-c63fa2b143f0
 	github.com/openshift/machine-config-operator v4.2.0-alpha.0.0.20190917115525-033375cbe820+incompatible
-	github.com/ovirt/go-ovirt v4.3.4+incompatible
-	github.com/ovirt/terraform-provider-ovirt v0.4.3-0.20200122105935-65b89ad00553
+	github.com/ovirt/go-ovirt v0.0.0-20200320082526-4e97a11ff083
+	github.com/ovirt/terraform-provider-ovirt v0.4.3-0.20200402170624-73f2734a19ba
 	github.com/packer-community/winrmcp v0.0.0-20180921211025-c76d91c1e7db // indirect
 	github.com/pborman/uuid v1.2.0
 	github.com/pierrec/lz4 v2.3.0+incompatible // indirect

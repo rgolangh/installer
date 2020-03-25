@@ -26,6 +26,10 @@ func setup() {
 			writer.Write([]byte("{}"))
 			return
 		}
+		if request.Method == http.MethodOptions {
+			writer.WriteHeader(http.StatusOK)
+		}
+		return
 	})
 }
 
@@ -48,7 +52,7 @@ func Test_validateAuth(t *testing.T) {
 		expectSuccess: true,
 	},
 		{
-			url:           "https://nonexisting",
+			url:           "https://nonexisting.com",
 			username:      "foo",
 			password:      "bar",
 			insecure:      false,

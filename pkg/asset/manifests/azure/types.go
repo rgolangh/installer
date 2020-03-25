@@ -71,11 +71,11 @@ type config struct {
 	CloudProviderRateLimit bool `json:"cloudProviderRateLimit" yaml:"cloudProviderRateLimit"`
 	// Rate limit QPS (Read)
 	CloudProviderRateLimitQPS float32 `json:"cloudProviderRateLimitQPS" yaml:"cloudProviderRateLimitQPS"`
-	// Rate limit Bucket Size
+	// Rate limit Bucket DiskSizeGB
 	CloudProviderRateLimitBucket int `json:"cloudProviderRateLimitBucket" yaml:"cloudProviderRateLimitBucket"`
 	// Rate limit QPS (Write)
 	CloudProviderRateLimitQPSWrite float32 `json:"cloudProviderRateLimitQPSWrite" yaml:"cloudProviderRateLimitQPSWrite"`
-	// Rate limit Bucket Size
+	// Rate limit Bucket DiskSizeGB
 	CloudProviderRateLimitBucketWrite int `json:"cloudProviderRateLimitBucketWrite" yaml:"cloudProviderRateLimitBucketWrite"`
 
 	// Use instance metadata service where possible

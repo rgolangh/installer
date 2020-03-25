@@ -22,15 +22,33 @@ variable "ovirt_template_id" {
   description = "The ID of oVirt's VM template"
 }
 
+variable "ovirt_master_instance_type_id" {
+  type        = string
+  description = "The ID of oVirt's instance type"
+}
+
+variable "ovirt_master_vm_type" {
+  type        = string
+  description = "The master's VM type"
+}
+
 variable "ignition_master" {
   type        = string
   description = "master ignition config"
 }
 
-variable "ovirt_master_mem" {
+variable "ovirt_master_memory" {
   type = string
 }
 
-variable "ovirt_master_cpu" {
+variable "ovirt_master_cores" {
+  type = string
+}
+
+variable "ovirt_master_sockets" {
+  type = string
+}
+
+variable "ovirt_master_os_disk_size_gb" {
   type = string
 }
