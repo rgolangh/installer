@@ -46,27 +46,26 @@ variable "ovirt_network_name" {
   description = "The name of ovirt's logical network for the selected ovirt cluster."
 }
 
-variable "ovirt_master_mem" {
-  type    = string
-  default = "8192"
+variable "ovirt_master_memory" {
+  type = string
 }
 
-variable "ovirt_master_cpu" {
-  type    = number
-  default = 4
+variable "ovirt_master_cores" {
+  type = string
 }
 
-variable "ovirt_template_mem" {
-  type    = string
-  default = "16384"
+variable "ovirt_master_sockets" {
+  type = string
 }
 
-variable "ovirt_template_cpu" {
-  type    = number
-  default = 4
+variable "ovirt_master_os_disk_gb" {
+  type = string
 }
 
-variable "ovirt_template_disk_size_gib" {
-  type    = number
-  default = 25
+variable "ovirt_master_vm_type" {
+  type = string
+}
+
+variable "ovirt_master_instance_type_id" {
+  type = string
 }

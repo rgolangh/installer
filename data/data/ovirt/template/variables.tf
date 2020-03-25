@@ -33,16 +33,3 @@ variable "ovirt_network_name" {
   default     = "ovirtmgmt"
   description = "The name of ovirt's logical network for the selected ovirt cluster."
 }
-
-variable "ovirt_template_mem" {
-  type = string
-}
-
-variable "ovirt_template_cpu" {
-  type = string
-}
-
-variable "disk_size_gib" {
-  type        = number
-  description = "The size of the template disk for worker/nodes in GiB."
-}
