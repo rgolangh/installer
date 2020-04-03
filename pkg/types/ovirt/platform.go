@@ -10,6 +10,8 @@ type Platform struct {
 	// The target network of all the network interfaces of the nodes. Omitting defaults to ovirtmgmt
 	// network which is a default network for evert ovirt cluster.
 	NetworkName string `json:"ovirt_network_name,omitempty"`
+	//VNICProfileID defines the VNIC profile ID to use the the VM network interfaces.
+	VNICProfileID string `json:"ovirt_vnic_profile_id,omitempty"`
 	// APIVIP is an IP which will be served by bootstrap and then pivoted masters, using keepalived
 	APIVIP string `json:"api_vip"`
 	// DNSVIP is the IP of the internal DNS which will be operated by the cluster

@@ -47,7 +47,12 @@ func Platform() (*ovirt.Platform, error) {
 		return &p, err
 	}
 
-	err = askNetwork(c, &p)
+	network, err := askNetwork(c, &p)
+	if err != nil {
+		return &p, err
+	}
+
+	err = askVNICProfileID(c, &p, network.MustId())
 	if err != nil {
 		return &p, err
 	}
